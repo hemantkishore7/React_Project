@@ -1,5 +1,7 @@
 import React from "react";
-import Board from "../components/Board";
+import Board from "../Pages/Board";
+import Jquery from '../Pages/Jquery';
+
 export default (function($) {
     "use strict"; // Start of use strict
   
@@ -46,7 +48,7 @@ export default (function($) {
       }
     });
   
-    // Smooth scrolling using jQuery easing
+    // Smooth scrolling using Jquery easing
     $(document).on('click', 'a.scroll-to-top', function(e) {
       var $anchor = $(this);
       $('html, body').stop().animate({
@@ -55,5 +57,5 @@ export default (function($) {
       e.preventDefault();
     });
   
-  })(jQuery); // End of use strict
+  })(Jquery); // End of use strict
 

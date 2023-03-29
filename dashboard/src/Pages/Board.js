@@ -1,4 +1,7 @@
 import React from "react";
+import Register from "./Register";
+import Buttons from "../Components/Buttons";
+
 
 function Board() {
   return (
@@ -46,6 +49,7 @@ function Board() {
               <i className="fas fa-fw fa-cog"></i>
               <span>Components</span>
             </a>
+            <nav>
             <div
               id="collapseTwo"
               className="collapse"
@@ -54,14 +58,19 @@ function Board() {
             >
               <div className="bg-white py-2 collapse-inner rounded">
                 <h6 className="collapse-header">Custom Components:</h6>
-                <a className="collapse-item" href="buttons.html">
+                <ul>
+                <li>
+                <a className="collapse-item" href={Buttons}>
                   Buttons
-                </a>
+                </a></li>
+                <li>
                 <a className="collapse-item" href="cards.html">
                   Cards
-                </a>
+                </a></li>
+                </ul>
               </div>
             </div>
+            </nav>
           </li>
 
           <li className="nav-item">
@@ -128,7 +137,7 @@ function Board() {
                 <a className="collapse-item" href="login.html">
                   Login
                 </a>
-                <a className="collapse-item" href="register.html">
+                <a className="collapse-item" href={Register}>
                   Register
                 </a>
                 <a className="collapse-item" href="forgot-password.html">
