@@ -1,52 +1,74 @@
 import Players from "./Players";
-import React from 'react'
-import {Button, Table} from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import {React }  from "react";
+import { Button, Table } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Link, useNavigate } from "react-router-dom";
+import { Fragment } from "react";
 
-function Home(){
+function Home() {
 
-    const handleDelete =(id)=>{
-        
-    }
-   return(
+  const history = useNavigate();
+
+  const handleDelete = (id) => {
+    let index = Players.map(function (e) {
+      return e.Id;
+    }).indexOf(id);
+    Players.splice(index, 1);
+
+    history("/");
+  };
+
+  function handleEdit(name, age, role){
+    console.log(name,age,role);
+    localStorage.setItem('Name',name);
+    localStorage.setItem('Age',age);
+    localStorage.setItem('Role',role);
+  }
+
+  return (
     <div className="container-fluid">
-     <fragment>
-        <div style={{margin:'10rem'}}>
-            <Table striped bordered hover size="sm">
-             <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Role</th>
-                </tr>
-             </thead>
-             <tbody>
-                {
-                    Players && Players.length > 0 ? 
-                    Players.map((e) =>{
-                        return(
-                            <tr>
-                                <td>{e.name}</td>
-                                <td>{e.age}</td>
-                                <td>{e.role}</td>
+      <Fragment>
+        <div style={{ margin: "10rem" }}>
+          <Table striped bordered hover size="sm">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Players && Players.length > 0
+                ? Players.map((e) => {
+                    return (
+                      <tr>
+                        <td>{e.Name}</td>
+                        <td>{e.Age}</td>
+                        <td>{e.Role}</td>
 
-                                <td>
-                                    <Button onClick={()=> alert(e.id)}>EDIT</Button>
-                                    &nbsp;
-                                    <Button onClick={()=> handleDelete(e.id)} >DELETE</Button>
-                                </td>
-                            </tr>
-                            
-                        )
-                    })
-                    : 'No Records!'
-                }
-             </tbody>
-            </Table>
+                        <td>
+                        <Link to='/edit'>
+                          <Button onClick={() => handleEdit(e.Name,e.Age,e.Role)}>EDIT</Button>
+                          </Link>   
+                          &nbsp;
+                          <Button onClick={() => handleDelete(e.Id)}>
+                            DELETE
+                          </Button>
+                        </td>
+                      </tr>
+                    );
+                  })
+                : "No Records!"}
+            </tbody>
+          </Table>
+          
+          <Link className="d-grid gap-2 " to='/create'>
+            <Button size="lg">CREATE</Button>
+          </Link>
         </div>
-     </fragment>
+      </Fragment>
     </div>
-   )
+  );
 }
 
 export default Home;

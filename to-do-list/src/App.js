@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import TextComponent from './components/TextCpmponent';
+
 import TodoComponent from './components/TodoComponent';
 
 function App() {

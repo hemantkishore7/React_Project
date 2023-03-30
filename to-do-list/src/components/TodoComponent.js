@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import {Card , Button} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function TodoComponent(){
    
@@ -16,7 +17,7 @@ function TodoComponent(){
    <div className="container">
    <div className="form-header">
     <input type='text' id="input" placeholder="Enter Task" onChange={(e)=>setTodo(e.target.value)}/>
-    <button onClick={handleTodo}>Add To-Do</button>
+    <Button onClick={handleTodo}>Add To-Do</Button>
     </div>
     <div className="form-body">
      <ul>

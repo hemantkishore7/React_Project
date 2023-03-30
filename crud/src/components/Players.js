@@ -1,27 +1,27 @@
 const Players =[
     {
-        id:1,
-        name:'Virat Kohli',
-        age:34,
-        role:'Batter'
+        Id:1,
+        Name:'Virat Kohli',
+        Age:34,
+        Role:'Batter'
     },
     {
-        id:2,
-        name:'Ms Dhoni',
-        age:40,
-        role:'Batter'
+        Id:2,
+        Name:'Ms Dhoni',
+        Age:40,
+        Role:'Batter'
     },
     {
-        id:3,
-        name:'Jaddu',
-        age:34,
-        role:'All-rounder'
+        Id:3,
+        Name:'Jaddu',
+        Age:34,
+        Role:'All-rounder'
     },
     {
-        id:4,
-        name:'Bumrah',
-        age:33,
-        role:'Bowler'
+        Id:4,
+        Name:'Bumrah',
+        Age:33,
+        Role:'Bowler'
     },
 ]
 
