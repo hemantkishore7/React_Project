@@ -12,11 +12,12 @@ function TodoComponent(){
         todoCopy.push(todo)
         //console.log(todoCopy);
         setTodos(todoCopy)
+        setTodo('')
     }
     return(
    <div className="container">
    <div className="form-header">
-    <input type='text' id="input" placeholder="Enter Task" onChange={(e)=>setTodo(e.target.value)}/>
+    <input type='text' id="input" placeholder="Enter Task" onChange={(e)=>setTodo(e.target.value)} value={todo}/>
     <Button onClick={handleTodo}>Add To-Do</Button>
     </div>
     <div className="form-body">

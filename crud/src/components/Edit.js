@@ -18,20 +18,30 @@ function Edit(){
       function handleUpdate(e){
         e.preventDefault()
 
-        let index = Players.map(function(e) {
+        let index = Players.map((e) => {
           return e.Id;
-        }).indexOf(id);
+        });
+
+        console.log(index)
+        let copyData = [...Players]
+        let a = copyData[index]
         
-        let a = Players[index]
-        
-        a.Name = name;
-        a.Age = age;
-        a.Role = role;
-        
+        // a.Name = name
+        // a.Age = age
+        // a.Role = role
+
+        setName(a.Name)
+      
+      
+
+      // let x =  Players.find((p)=> p.Id === id)
+      
+    
         history('/')
       }
 
       useEffect(()=>{
+        setId(localStorage.getItem('Id'))
         setName(localStorage.getItem('Name'))
         setAge(localStorage.getItem('Age'))
         setRole(localStorage.getItem('Role'))

@@ -18,8 +18,9 @@ function Home() {
     history("/");
   };
 
-  function handleEdit(name, age, role){
-    console.log(name,age,role);
+  function handleEdit(id, name, age, role){
+    //console.log(name,age,role);
+    localStorage.setItem('Id',id)
     localStorage.setItem('Name',name);
     localStorage.setItem('Age',age);
     localStorage.setItem('Role',role);
@@ -27,7 +28,9 @@ function Home() {
 
   return (
     <div className="container-fluid">
+    <header className="header display-1 mt-2">Player Lists</header>
       <Fragment>
+      
         <div style={{ margin: "10rem" }}>
           <Table striped bordered hover size="sm">
             <thead>
@@ -48,7 +51,7 @@ function Home() {
 
                         <td>
                         <Link to='/edit'>
-                          <Button onClick={() => handleEdit(e.Name,e.Age,e.Role)}>EDIT</Button>
+                          <Button onClick={() => handleEdit(e.Id,e.Name,e.Age,e.Role)}>EDIT</Button>
                           </Link>   
                           &nbsp;
                           <Button onClick={() => handleDelete(e.Id)}>
@@ -68,6 +71,7 @@ function Home() {
         </div>
       </Fragment>
     </div>
+   
   );
 }
 
