@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import Dashboards from './components/DashboardPage/Dashboards';
+import Dashboard from './components/DashboardPage/Dashboard';
 import ButtonPage from './components/ComponentsPage/ButtonsPage/ButtonPage';
 import Cards from './components/ComponentsPage/CardsPage/Cards';
 import Colors from './components/UtilitiesPage/ColorsPage/Colors';
@@ -13,7 +13,7 @@ import Register from './components/AddonPages/Register';
 import ForgotPassword from './components/AddonPages/ForgotPassword';
 import ErrorPage from './components/AddonPages/ErrorPages';
 import BlankPage from './components/AddonPages/BlankPages';
-import Charts from './components/ChartsPage/Charts';
+import Charts from './components/ChartsPage/chart';
 import Tables from './components/TablesPage/Tables';
 
 function App() {
@@ -32,9 +32,9 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Dashboards open={open} setOpen={setOpen} handleOpen={handleOpen} open1={open1}
+        <Route path="/" element={<Dashboard open={open} setOpen={setOpen} handleOpen={handleOpen} open1={open1}
           setOpen1={setOpen1} handleOpen1={handleOpen1} open2={open2} setOpen2={setOpen2} handleOpen2={handleOpen2}/>} />
-        <Route path="/dashboards" element={<Dashboards open={open} setOpen={setOpen} handleOpen={handleOpen} open1={open1}
+        <Route path="/dashboards" element={<Dashboard open={open} setOpen={setOpen} handleOpen={handleOpen} open1={open1}
           setOpen1={setOpen1} handleOpen1={handleOpen1} open2={open2} setOpen2={setOpen2} handleOpen2={handleOpen2}/>} />
         <Route path="/buttons" element={<ButtonPage open={open} setOpen={setOpen} handleOpen={handleOpen} open1={open1}
           setOpen1={setOpen1} handleOpen1={handleOpen1} open2={open2} setOpen2={setOpen2} handleOpen2={handleOpen2}/>} />

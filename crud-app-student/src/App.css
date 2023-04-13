@@ -1,17 +1,23 @@
-p{
+html,body,p{
   margin: 0px;
+  padding: 0px;
+ }
+h5 > a{
+  text-decoration: none;
+  color: rgb(9, 25, 30);
 }
-
 /* Crud app CSS */
-.container {
-  margin: 0px auto;
-  padding: 0;
-  max-width: 100%;
-  width: 100vw;
+.app-container{
+  margin: 0 auto;
+  padding: 0px;
+  /* max-width: 1280px; */
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
+
 .main {
   display: flex;
   flex-direction: row;
@@ -90,7 +96,18 @@ p{
   width: 400px;
   height: 300px;
 
+
 }
 .login-container{
   box-sizing: border-box;
+}
+
+.student-table{
+  display: flex;
+  
+}
+.teacher-table-button,.student-table-button{
+  display: flex;
+ justify-content: center;
+
 }

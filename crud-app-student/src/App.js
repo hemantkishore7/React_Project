@@ -1,18 +1,18 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Login from "./Page/Login";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import index from './component/Teacher/index'
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CreateTeacher from "./component/Teacher/CreateTeacher";
+import Table from "./component/Student/StudentTable";
 import { Link } from "react-router-dom";
-import Main from "./component/Student/Main";
-import create from "./component/Student/CreateStudent";
-import createTeacher from './component/Teacher/CreateTeacher'
+import AddStudent from "./component/Student/AddStudent";
+import TeacherTable from "./component/Teacher/TeacherTable";
+import Dashboard from "./Page/Dashboard";
 
 function App() {
   return (
     <>
-      <div className="container">
+      <div className="app-container">
         <div className="zen-header">
           <h2>
             <span className="material-symbols-outlined">school</span>Zen Class
@@ -25,37 +25,38 @@ function App() {
                 <span className="material-symbols-outlined">
                   dashboard_customize
                 </span>
-                Dashboard
+                <Link to="/">Dashboard</Link>
               </h5>
             </div>
             <div className="side-menu">
               <nav className="zen-sidebar-nav" id="zen-sidebar-nav">
                 <ul>
                   <li>
-                    <Link to="/Main">Student</Link>
+                    <Link to="/table">Student</Link>
                   </li>
 
                   <li>
-                    <Link to='/index'>Teacher</Link>
+                    <Link to="/teacher">Teacher</Link>
                   </li>
                 </ul>
               </nav>
             </div>
           </div>
-          <div className="content-area">
-            <Routes>
-              <Route path="main" Component={Main}>
-                <Route path="create" Component={create} />
-                <Route path="login" Component={Login} />
-              </Route>
-              <Route path="index" Component={index} >
-              <Route path="create" Component={createTeacher} />
-                <Route path="login" Component={Login} />
-              </Route>
-            </Routes>
-          </div>
+        
+        <div className="content-area">
+          <Routes>
+            <Route path="table" element={<Table />}>
+              <Route path="add" element={<AddStudent />} />
+            </Route>
+            <Route path="teacher" element={<TeacherTable />}>
+              <Route path="mentor" element={<CreateTeacher />} />
+            </Route>
+          </Routes>
+          {/* </Routes> */}
+        </div>
         </div>
       </div>
+   
     </>
   );
 }

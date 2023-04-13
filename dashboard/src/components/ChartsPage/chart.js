@@ -134,4 +134,4 @@ const Charts = ({ handleOpen,handleOpen1,handleOpen2,open,open1,open2,setOpen,
   )
 }
 
-export default Charts
+export default Charts;
