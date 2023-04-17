@@ -1,22 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Button, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import {TeacherData} from "./TeacherData";
+import Update from './UpdateTeacher'
 
 export default function TeacherTable() {
+  const [teacher,setTeacher] = useState(TeacherData)
+  const[updateState,SetUpdateState] = useState(-1)
 
   const history = useNavigate()
 
   function handleRemove(name) {
     
-   let index = TeacherData.map((e)=>{
+   let index = teacher.map((e)=>{
     return e.name
    }).indexOf(name)
-   TeacherData.splice(index,1)
+   teacher.splice(index,1)
      history('/teacher')
   }
+
+  function handleEdit(name) {
+    SetUpdateState(name);
+  }
+
+
   return (
     <>
     <div className="teacher-table">
@@ -31,20 +40,20 @@ export default function TeacherTable() {
             </tr>
           </thead>
           <tbody>
-            {TeacherData.length > 0
-              ? TeacherData.map((data, index) => {
-                  return (
+            {teacher.map((data, index) => 
+                 updateState !== data.name ? (
                     <tr key={index}>
                       <td>{data.name}</td>
                       <td>{data.skill}</td>
                       <td>{data.batch}</td>
                       <td>
+                      <Button className="btn btn-light" onClick={handleEdit(data.name)}>EDIT</Button>
                         <Button className="btn btn-dark" onClick={()=>handleRemove(data.name)}>Remove</Button>
                       </td>
                     </tr>
-                  );
-                })
-              : "No Records Found!"}
+                  ) : (<Update data={data} teacher={teacher} setTeacher={setTeacher}/>
+            )
+             )}
           </tbody>
         </Table>
         <div className="teacher-table-button">

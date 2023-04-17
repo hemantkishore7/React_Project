@@ -7,8 +7,8 @@ import TeamDetails from './pages/TeamDetails';
 function App() {
   return (
     <div className="App">
-    <TeamDetails/>
-     {/* <TodoComponent/> */}
+    {/* <TeamDetails/> */}
+     <TodoComponent/>
     </div>
   );
 }
