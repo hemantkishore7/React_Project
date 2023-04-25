@@ -1,70 +1,92 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Button, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import {TeacherData} from "./TeacherData";
-import Update from './UpdateTeacher'
+import { TeacherData } from "./TeacherData";
+import Update from "./UpdateTeacher";
+import axios from "axios";
 
 export default function TeacherTable() {
-  const [teacher,setTeacher] = useState(TeacherData)
-  const[updateState,SetUpdateState] = useState(-1)
+  const [teacher, setTeacher] = useState([]);
 
-  const history = useNavigate()
+  useEffect(() => {
+    axios
+      .get("https://64477bb750c253374425ea00.mockapi.io/crud/teacher")
+      .then((res) => setTeacher(res.data));
+  }, []);
 
-  function handleRemove(name) {
-    
-   let index = teacher.map((e)=>{
-    return e.name
-   }).indexOf(name)
-   teacher.splice(index,1)
-     history('/teacher')
+  const history = useNavigate();
+
+  function handleRemove(id) {
+    axios
+      .delete(`https://64477bb750c253374425ea00.mockapi.io/crud/teacher/${id}`)
+      .then(() => {
+        getData();
+      });
   }
 
-  function handleEdit(name) {
-    SetUpdateState(name);
+  function getData() {
+    axios
+      .get("https://64477bb750c253374425ea00.mockapi.io/crud/teacher")
+      .then((d) => {
+        setTeacher(d.data);
+      });
   }
 
+  function setData(id, name, batch) {
+    localStorage.setItem("id", id);
+    localStorage.setItem("name", name);
+    localStorage.setItem("batch", batch);
+  }
 
   return (
     <>
-    <div className="teacher-table">
-      <div className="teacher-table-list" style={{ margin: "2rem" }}>
-        <Table table stripped hover size="lg">
-          <thead className="table-dark">
-            <tr>
-              <th scope="col">Mentor Name</th>
-              <th scope="col">Skill</th>
-              <th scope="col">Batch</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {teacher.map((data, index) => 
-                 updateState !== data.name ? (
-                    <tr key={index}>
-                      <td>{data.name}</td>
-                      <td>{data.skill}</td>
-                      <td>{data.batch}</td>
-                      <td>
-                      <Button className="btn btn-light" onClick={handleEdit(data.name)}>EDIT</Button>
-                        <Button className="btn btn-dark" onClick={()=>handleRemove(data.name)}>Remove</Button>
-                      </td>
-                    </tr>
-                  ) : (<Update data={data} teacher={teacher} setTeacher={setTeacher}/>
-            )
-             )}
-          </tbody>
-        </Table>
-        <div className="teacher-table-button">
-          <Link to="mentor">
-            <button className="btn btn-outline-success">Create</button>
-          </Link>
+      <div className="teacher-table">
+        <div className="teacher-table-list" style={{ margin: "2rem" }}>
+          <Table table stripped hover size="lg">
+            <thead className="table-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Batch</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {teacher.map((data, index) => (
+                <tr key={index}>
+                  <td>{data.id}</td>
+                  <td>{data.name}</td>
+                  <td>{data.batch}</td>
+                  <td>
+                    <Link to="update">
+                      <Button
+                        className="btn btn-light"
+                        onClick={()=>setData(data.id, data.name, data.batch)}
+                      >
+                        EDIT
+                      </Button>
+                    </Link>
+                    <Button
+                      className="btn btn-dark"
+                      onClick={() => handleRemove(data.id)}
+                    >
+                      Remove
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+          <div className="teacher-table-button">
+            <Link to="mentor">
+              <button className="btn btn-outline-success">Create</button>
+            </Link>
+          </div>
         </div>
       </div>
-      
-      </div>
-      <Outlet/>
+      <Outlet />
     </>
   );
 }

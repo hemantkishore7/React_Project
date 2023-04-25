@@ -5,32 +5,54 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import add from "./AddStudent";
 import { useState } from "react";
-import Edit from "./UpdateStud";
+import axios from "axios";
 
-export default function StudentTable(props) {
-  const {handleUpdate} = props
+export default function StudentTable() { 
+  
   const history = useNavigate();
-  const [updateState, SetUpdateState] = useState();
-  const [details, setDetails] = useState();
-  const [students, setStudents] = useState(StudentData);
+
+ 
+
+  const [student, setStudent] = useState([]);
+
+ useEffect(() => getStudent(), []);
+
+  function getData(){
+    axios.get('https://64477bb750c253374425ea00.mockapi.io/crud/user')
+      .then((data)=>{
+         setStudent(data.data)
+      })
+  }
+
+  function getStudent() {
+     axios.get('https://64477bb750c253374425ea00.mockapi.io/crud/user')
+     .then((r)=>{
+      setStudent(r.data)
+     })
+      
+     
+  }
+
+  
 
   function handleRemove(id) {
-    // let studentCopy = [...StudentDetail];
-    // studentCopy = studentCopy.filter((student)=> student.name !== name)
-    //  StudentDetail.push(studentCopy);
-    let index = students.map((e) => {
-      return e.id;
-    }).indexOf(id);
-    console.log(index);
-    students.splice(index, 1);
-    history("/table");
+    axios
+      .delete(`https://64477bb750c253374425ea00.mockapi.io/crud/user/${id}`)
+      .then(() => {
+        getData();
+      });
   }
 
-  function handleEdit(id) {
-    SetUpdateState(id);
+  function handleEdit(id, name, age, email, course, batch) {
+    //console.log(id,name,age,batch,course);
+    localStorage.setItem("id", id);
+    localStorage.setItem("name", name);
+    localStorage.setItem("age", age);
+    localStorage.setItem("email", email);
+    localStorage.setItem("course", course);
+    localStorage.setItem("batch", batch);
   }
-  
- 
+
   // function handleUpdate(e){
   //   e.preventDefault()
   //   SetUpdateState(-1)
@@ -47,41 +69,47 @@ export default function StudentTable(props) {
                 <th scope="col">#</th>
                 <th scope="col">Student Name</th>
                 <th scope="col">Age</th>
-                <th scope="col">E-Mail</th>
                 <th scope="col">Course</th>
-                <th scope="col">Batch</th>
+                <th scope="col">batch</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-              {students.map((data, index) =>
-                updateState !== data.id ? (
-                  <tr key={index}>
-                    <th scope="row">{data.id}</th>
-                    <td>{data.name}</td>
-                    <td>{data.age}</td>
-                    <td>{data.email}</td>
-                    <td>{data.course}</td>
-                    <td>{data.batch}</td>
-                    <td>
+              {student.map((data, index) => (
+                <tr key={index}>
+                  <th scope="row">{data.id}</th>
+                  <td>{data.name}</td>
+                  <td>{data.age}</td>
+
+                  <td>{data.course}</td>
+                  <td>{data.batch}</td>
+                  <td>
+                    <Link to="edit">
                       <Button
                         className="btn btn-light"
-                        onClick={() => handleEdit(data.id)}
+                        onClick={() =>
+                          handleEdit(
+                            data.id,
+                            data.name,
+                            data.age,
+                            data.email,
+                            data.course,
+                            data.batch
+                          )
+                        }
                       >
                         EDIT
                       </Button>
-                      <Button
-                        className="btn btn-dark"
-                        onClick={() => handleRemove(data.id)}
-                      >
-                        Remove
-                      </Button>
-                    </td>
-                  </tr>
-                ) : (
-                  <Edit data={data} students={students} setStudents={setStudents}/>
-                )
-              )}
+                    </Link>
+                    <Button
+                      className="btn btn-dark"
+                      onClick={() => handleRemove(data.id)}
+                    >
+                      Remove
+                    </Button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </Table>
           <div className="student-table-button">

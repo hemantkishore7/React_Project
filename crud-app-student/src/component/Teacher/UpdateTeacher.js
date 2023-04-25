@@ -1,21 +1,35 @@
 import { Button, Form } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Edit(props) {
-  const { data, teacher, setTeacher } = props;
+
+  const [id,setId] = useState();
+  const [name,setName] = useState();
+  const [batch, setBatch] = useState();
+
   const history = useNavigate();
 
-  function handleInput(e) {
-    const update = teacher.map((d) =>
-      d.name === data.name ? { ...d, [e.target.name]: e.target.value } : d
-    );
-    setTeacher(update);
-    history("/teacher");
-  }
+  useEffect(()=>{
+    setId(localStorage.getItem('id'))
+    setName(localStorage.getItem('name'))
+    setBatch(localStorage.getItem('batch'))
+  },[])
 
-  function handleUpdate(e) {
-    e.preventDefault();
+
+  function handleUpdate() {
+  
+    const updateTeacher = {
+      name:name,
+      batch:batch
+    }
+    axios.put(`https://64477bb750c253374425ea00.mockapi.io/crud/teacher/${id}`,{
+      name,
+      batch
+    })
+    alert('Updated Successfully! Refresh the page..')
+  
   }
   return (
     <div className="update-table" style={{ margin: "1rem" }}>
@@ -24,27 +38,20 @@ export default function Edit(props) {
           <Form.Control
             type="text"
             name="name"
-            value={data.name}
+            value={name}
             required
-            onChange={handleInput}
+            onChange={(e)=>setName(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formCourse">
-          <Form.Control
-            type="text"
-            name="course"
-            value={data.course}
-            required
-            onChange={handleInput}
-          ></Form.Control>
-        </Form.Group>
+        
+       
         <Form.Group className="mb-3" controlId="formBatch">
           <Form.Control
             type="text"
             name="batch"
-            value={data.batch}
+           value={batch}
             required
-            onChange={handleInput}
+            onChange={(e)=>setBatch(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Button

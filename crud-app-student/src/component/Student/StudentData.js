@@ -33,4 +33,4 @@ export const StudentData = [
     }
 ]
 
-//export default StudentData;
+export default StudentData;

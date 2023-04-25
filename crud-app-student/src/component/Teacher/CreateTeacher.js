@@ -2,26 +2,27 @@ import React, {useState} from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {TeacherData} from './TeacherData'
+
+import axios from 'axios'
 
 export default function CreateTeacher() {
 
   const history = useNavigate();
 
   const [name, setName] = useState('');
-  const [skill, setSkill] = useState('');
-
+  const [id, setId] = useState();
   const [batch, setBatch] = useState('');
 
   function handleAdd(e){
       e.preventDefault()
-     
-      let a= name;
-      let b= skill;
-      let c= batch;
-     
-      TeacherData.push({name : a, skill:b, batch:c})
-
+     const newTeacher = {
+      name:name,
+      batch:batch,
+     }
+      axios.post('https://64477bb750c253374425ea00.mockapi.io/crud/teacher',{
+        ...newTeacher
+      })
+      alert('Succesfully Created! Refresh the Page..')
       history('/teacher')
   }
 
@@ -33,10 +34,7 @@ export default function CreateTeacher() {
             <Form.Control type="text" placeholder="Mentor Name" required onChange={(e)=>setName(e.target.value)}>
             </Form.Control>
            </Form.Group>
-           <Form.Group className="mb-3" controlId="formSkill">
-            <Form.Control type="text" placeholder="Skill" onChange={(e)=>setSkill(e.target.value)}>
-            </Form.Control>
-           </Form.Group>
+           
            <Form.Group className="mb-3" controlId="formBatch">
             <Form.Control type="text" placeholder="Batch ID" required onChange={(e)=>setBatch(e.target.value)}>
             </Form.Control>
