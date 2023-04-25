@@ -9,7 +9,7 @@ import axios from "axios";
 
 export default function StudentTable() { 
   
-  const history = useNavigate();
+  const reload = useNavigate();
 
  
 

@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 export default function Edit() {
-  const history = useNavigate();
+  const reload = useNavigate();
   
   const [student, SetStudent] = useState(StudentData);
   const [id,setId] = useState();
@@ -25,26 +25,21 @@ export default function Edit() {
     setBatch(localStorage.getItem('batch'))
    },[])
  
-   function reload(){
-    history('/table')
-   }
+  //  function reload(){
+  //   history('/table')
+  //  }
 
-  function handleUpdate(e) {
-    e.preventDefault();
-   
-    const updateStudent = {
-      name: name,
-      age:age,
-      course:course,
-      batch:batch,
-         
-    };
+  function handleUpdate() {
+  
 
     axios.put(`https://64477bb750c253374425ea00.mockapi.io/crud/user/${id}`,{
-      ...updateStudent
+      name,
+      age,
+      course,
+      batch
     })
-    alert('Updated Successfully!  Refresh the Page!')
-   
+    alert('Updated Successfully!..')
+    
   }
 
   return (

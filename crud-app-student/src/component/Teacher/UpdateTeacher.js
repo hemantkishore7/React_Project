@@ -9,7 +9,7 @@ export default function Edit(props) {
   const [name,setName] = useState();
   const [batch, setBatch] = useState();
 
-  const history = useNavigate();
+  const reload = useNavigate();
 
   useEffect(()=>{
     setId(localStorage.getItem('id'))
@@ -20,16 +20,13 @@ export default function Edit(props) {
 
   function handleUpdate() {
   
-    const updateTeacher = {
-      name:name,
-      batch:batch
-    }
+    
     axios.put(`https://64477bb750c253374425ea00.mockapi.io/crud/teacher/${id}`,{
       name,
       batch
     })
     alert('Updated Successfully! Refresh the page..')
-  
+
   }
   return (
     <div className="update-table" style={{ margin: "1rem" }}>

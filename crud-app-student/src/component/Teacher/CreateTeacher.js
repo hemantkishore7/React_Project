@@ -13,17 +13,14 @@ export default function CreateTeacher() {
   const [id, setId] = useState();
   const [batch, setBatch] = useState('');
 
-  function handleAdd(e){
-      e.preventDefault()
-     const newTeacher = {
-      name:name,
-      batch:batch,
-     }
+  function handleAdd(){
+      
       axios.post('https://64477bb750c253374425ea00.mockapi.io/crud/teacher',{
-        ...newTeacher
+       name,
+       batch
       })
       alert('Succesfully Created! Refresh the Page..')
-      history('/teacher')
+     
   }
 
   return (

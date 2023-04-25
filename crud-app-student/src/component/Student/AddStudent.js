@@ -16,22 +16,14 @@ export default function AddStudent() {
 
 
   const handleSubmit =()=>{
-    
-    const newStudent = {
-      name: name,
-      age:age,
-      course:course,
-      batch:batch,
-         
-    };
 
       axios.post('https://64477bb750c253374425ea00.mockapi.io/crud/user',{
-       ...newStudent
+       name,
+       age,
+       course,
+       batch
        })
-       alert('Success')
-       
- 
-
+       alert('Successfully added!..')
   }
 
   // function handleSubmit(e) {
