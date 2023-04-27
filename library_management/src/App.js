@@ -60,74 +60,14 @@ const returndeletfun = async (dataid) =>{
         <Route path="*" element={<Books/>} />
       </Routes>
 
-{/* <Footer/> */}
+
 
     </div>
   )
 }
 
 
-function Footer(){
 
-return(
-
-<div className="text-light">
-<footer className="py-5 bg-dark">
-  <div className="container">
-      <div className="row">
-        <div className="col-md-2 col-6 ">
-          <h5>Section</h5>
-          <ul className="nav flex-column">
-            <li className="nav-item mb-2"><span  href="#" className="nav-link p-0  text-white">Home</span></li>
-            <li className="nav-item mb-2"><span  href="#" className="nav-link p-0   text-white">Features</span></li>
-            <li className="nav-item mb-2"><span  href="#" className="nav-link p-0   text-white">Pricing</span></li>
-            <li className="nav-item mb-2"><span  href="#" className="nav-link p-0   text-white">FAQs</span></li>
-            <li className="nav-item mb-2"><span href="#" className="nav-link p-0   text-white">About</span></li>
-          </ul>
-        </div>
-
-        <div className="col-md-2 col-6 " >
-          <h5>Section</h5>
-          <ul className="nav flex-column">
-            <li className="nav-item mb-2"><span  href="#" className="nav-link p-0   text-white">Home</span></li>
-            <li className="nav-item mb-2"><span  href="#" className="nav-link p-0   text-white">Features</span></li>
-            <li className="nav-item mb-2"><span  href="#" className="nav-link p-0  text-white">Pricing</span></li>
-            <li className="nav-item mb-2"><span  href="#" className="nav-link p-0   text-white">FAQs</span></li>
-            <li className="nav-item mb-2"><span href="#" className="nav-link p-0   text-white">About</span></li>
-          </ul>
-        </div>
-
-        <div className="col-md-8 mt-3 text-center">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad corrupti modi beatae hic reprehenderit tenetur alias perferendis, quidem perspiciatis atque sed, distinctio eaque praesentium! Error aspernatur porro perspiciatis dolores vitae!</p>
-        </div>
-
-
-
-
-      </div>
-
-      <div className="d-flex justify-content-between py-4 my-4 border-top">
-        <p>© 2021 Company, Inc. All rights reserved.</p>
-        <ul className="list-unstyled d-flex">
-          <li className="ms-3"><a className="link-light" href="#"><i className="fa-brands fa-twitter"></i></a></li>
-          <li className="ms-3"><a className="link-light" href="#"><i className="fa-brands fa-facebook"></i></a></li>
-          <li className="ms-3"><a className="link-light" href="#"><i className="fa-brands fa-instagram"></i></a></li>
-        </ul>
-      </div>
-  </div>
-    </footer>
-
-
-</div>
-
-
-
-
-)
-
-
-
-}
 
 
 export default App

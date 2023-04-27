@@ -105,7 +105,7 @@ return <div className=" col-lg-3 mb-2 col-md-4 col-sm-6  d-flex justify-content-
 
 <div className="d-grid">
 
-<button className="btn btn-success"
+<button className="btn btn-danger"
 
 onClick={(() =>{updatafun(bmd.id)
 console.log(bmd.id);
@@ -161,7 +161,7 @@ console.log(bmd.id);
 
 }
 
-<button className="btn btn-success"
+<button className="btn btn-danger"
 
 // onClick={(() =>{updatafun(bmd.id)
 // console.log(bmd.id);

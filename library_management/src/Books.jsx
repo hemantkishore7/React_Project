@@ -124,7 +124,7 @@ if(bmd.status == "available" ){
 {/* <button onClick={(() => console.log() )} class="btn mb-1 btn-primary">Details</button>
  */}
 
-<button onClick={(() =>{ func(bmd) } )} class="btn mb-1 btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+<button onClick={(() =>{ func(bmd) } )} class="btn mb-1 btn-outline-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
   Details
 </button>
 
@@ -152,7 +152,7 @@ if(bmd.status == "available" ){
 
 
 
-  <button className="btn mb-1 btn-success"
+  <button className="btn mb-1 btn-outline-dark"
   onClick={(() =>{
     console.log(bmd.id);
 
@@ -160,7 +160,7 @@ if(bmd.status == "available" ){
 
   } )}  >Edit</button>
 
-  <button className="btn mb-1 btn-primary" 
+  <button className="btn mb-1 btn-outline-success" 
   onClick={(() =>{
     updatafun(bmd)
 
@@ -174,7 +174,7 @@ if(bmd.status == "available" ){
   >Takebooks</button>
 
 
-  <button className="btn mb-1 btn-danger" onClick={(() =>{
+  <button className="btn mb-1 btn-outline-danger" onClick={(() =>{
 
 
 deletfun(bmd.id)

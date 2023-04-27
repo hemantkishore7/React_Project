@@ -173,8 +173,8 @@ navigate("/books")
 }
     <div className="d-grid mt-3">
 
-    <button className="btn mb-2 btn-success" type="submit" >Update Books</button>
-    <button className="btn btn-danger" onClick={(() => navigate("/books") )}>Cancel</button>
+    <button className="btn mb-2 btn-primary" type="submit" >Update Books</button>
+    <button className="btn btn-light" onClick={(() => navigate("/books") )}>Cancel</button>
     </div>
 
 
