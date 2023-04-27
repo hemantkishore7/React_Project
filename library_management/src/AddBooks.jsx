@@ -100,58 +100,58 @@ navigate("/books")
 
 <form onSubmit={handleSubmit} >
 
-<div className="mb-1">
+<div className="mb-1" style={{color:'red'}}>
 
-<label className="form-label">Title Books *</label>
+<label className="form-label" style={{color:'black'}}>Title Books </label>
 <input onBlur={handleBlur} className="form-control" value={values.name} name="name" onChange={handleChange} type="text" placeholder="Title" />
 {touched.name && errors.name ? errors.name : null}
 
 </div>
 
-<div className="mb-1">
+<div className="mb-1" style={{color:'red'}}>
 
-<label className="form-label">Author *</label>
+<label className="form-label"  style={{color:'black'}}>Author </label>
 <input onBlur={handleBlur} className="form-control" value={values.author} name="author" onChange={handleChange} type="text" placeholder="author" />
 {touched.author && errors.author ? errors.author : null}
 </div>
-<div className="mb-1">
+<div className="mb-1" style={{color:'red'}}>
 
-<label className="form-label" >Published *</label>
+<label className="form-label"  style={{color:'black'}}>Published </label>
 <input onBlur={handleBlur} className="form-control" value={values.published} name="published"  onChange={handleChange} type="text" placeholder="published" />
 {touched.published && errors.published ? errors.published : null}
 </div>
 
-<div className="mb-1">
+<div className="mb-1" style={{color:'red'}}>
 
-<label className="form-label" >Publisher *</label>
+<label className="form-label"  style={{color:'black'}}>Publisher </label>
 <input onBlur={handleBlur} className="form-control" value={values.publisher} name="publisher"  onChange={handleChange} type="text" placeholder="publisher" />
 {touched.publisher && errors.publisher ? errors.publisher : null}
 </div>
-<div className="mb-1">
+<div className="mb-1" style={{color:'red'}}>
 
-<label className="form-label" >Descriptions *</label>
+<label className="form-label"  style={{color:'black'}}>Descriptions </label>
 <input onBlur={handleBlur} className="form-control"  value={values.description} name="description"  onChange={handleChange} type="text" placeholder="description" />
 {touched.description && errors.description ? errors.description : null}
 </div>
 
 
-<div className="mb-1">
+<div className="mb-1" style={{color:'red'}}>
 
 
-<label className="form-label" >Pages</label>
+<label className="form-label"  style={{color:'black'}}>Pages</label>
 <input className="form-control" value={values.pages}  name="pages" onChange={handleChange} type="text" placeholder="Pages" />
 </div>
 
 
-<div className="mb-1">
+<div className="mb-1" style={{color:'red'}}>
 
 
-<label className="form-label" >website</label>
+<label className="form-label"  style={{color:'black'}}>website</label>
 <input className="form-control" value={values.website} name="website"  onChange={handleChange} type="text" placeholder="website" />
 
 </div>
 
-<div className="d-grid mt-3">
+<div className="d-grid mt-3" >
 
 <button className="btn btn-primary" type="submit" >AddBooks</button>
 </div>
