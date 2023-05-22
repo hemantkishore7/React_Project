@@ -5,15 +5,15 @@ import { closedRoutes, openRoutes } from "./Configs/Routes";
 function App() {
   const isLoggedIn = false;
   return (
-    <div className="app">
+    <div className="App">
       <Routes>
         {isLoggedIn
-          ? closedRoutes.map((routes) => {
-              <Route path={routes.path} element={routes.component} />;
-            })
-          : openRoutes.map((routes) => {
-              <Route path={routes.path} element={routes.component} />;
-            })}
+          ? closedRoutes.map((routes) => (
+              <Route path={routes.path} element={routes.component} />
+          ))
+          : openRoutes.map((routes) => (
+              <Route path={routes.path} element={routes.component} />
+            ))}
       </Routes>
     </div>
   );

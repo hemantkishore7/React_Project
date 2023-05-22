@@ -1,10 +1,16 @@
 import React from 'react'
+import {Box} from '@mui/material'
 
 function Login() {
   return (
-    <div>
-    <h1>hello</h1>
-    </div>
+    <Box className='Login-page App-container'>
+       <Box className='login-header'>
+
+       </Box>
+       <Box className='login-body'>
+        
+       </Box>
+    </Box>
   )
 }
 
