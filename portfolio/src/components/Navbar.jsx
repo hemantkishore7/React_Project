@@ -10,7 +10,8 @@ function Navbar() {
   return (
     <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300">
       <div>
-        <img src="" alt="logo" style={{ width: "50px" }} />
+        {/* <img src="" alt="logo" style={{ width: "50px" }} /> */}
+        <p className=" font-bold text-pink-600 shadow-sm hover:scale-110 duration-200">HK</p>
       </div>
       {/* menu */}
       <ul className="hidden md:flex ">
