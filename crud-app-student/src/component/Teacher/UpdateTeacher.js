@@ -9,7 +9,7 @@ export default function Edit(props) {
   const [name,setName] = useState();
   const [batch, setBatch] = useState();
 
-  const reload = useNavigate();
+
 
   useEffect(()=>{
     setId(localStorage.getItem('id'))
@@ -18,19 +18,25 @@ export default function Edit(props) {
   },[])
 
 
-  function handleUpdate() {
-  
+  async function handleUpdate(e) {
+   e.preventDefault()
     
-    axios.put(`https://64477bb750c253374425ea00.mockapi.io/crud/teacher/${id}`,{
+    await axios.put(`https://64477bb750c253374425ea00.mockapi.io/crud/teacher/${id}`,{
       name,
       batch
     })
-    alert('Updated Successfully! Refresh the page..')
-
+    alert('Updated Successfully!..')
+    reloadPage();
+    
   }
+
+  const reloadPage = () =>{
+    window.location.reload()
+  }
+
   return (
     <div className="update-table" style={{ margin: "1rem" }}>
-      <Form className="d-grid" style={{ margin: "1rem" }}>
+      <Form className="d-grid" style={{ margin: "1rem" }} name="update">
         <Form.Group className="mb-3" controlId="formName">
           <Form.Control
             type="text"
@@ -52,7 +58,7 @@ export default function Edit(props) {
           ></Form.Control>
         </Form.Group>
         <Button
-          onClick={handleUpdate}
+          onClick={(e)=>handleUpdate(e)}
           type="submit"
           className="btn btn-warning"
         >

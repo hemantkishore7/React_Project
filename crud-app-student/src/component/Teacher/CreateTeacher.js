@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
 import axios from 'axios'
 
 export default function CreateTeacher() {
@@ -13,14 +12,18 @@ export default function CreateTeacher() {
   const [id, setId] = useState();
   const [batch, setBatch] = useState('');
 
-  function handleAdd(){
-      
-      axios.post('https://64477bb750c253374425ea00.mockapi.io/crud/teacher',{
+  async function handleAdd(e){
+      e.preventDefault()
+     await axios.post('https://64477bb750c253374425ea00.mockapi.io/crud/teacher',{
        name,
        batch
       })
       alert('Succesfully Created! Refresh the Page..')
-     
+      reloadPage()
+  }
+
+  const reloadPage = () =>{
+    window.location.reload()
   }
 
   return (

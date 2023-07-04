@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 export default function Edit() {
-  const reload = useNavigate();
+  const navigate = useNavigate();
   
   const [student, SetStudent] = useState(StudentData);
   const [id,setId] = useState();
@@ -29,8 +29,8 @@ export default function Edit() {
   //   history('/table')
   //  }
 
-  function handleUpdate() {
-  
+  function handleUpdate(e) {
+   e.preventDefault()
 
     axios.put(`https://64477bb750c253374425ea00.mockapi.io/crud/user/${id}`,{
       name,
@@ -38,8 +38,13 @@ export default function Edit() {
       course,
       batch
     })
+   
     alert('Updated Successfully!..')
-    
+    reloadPage()
+  }
+
+  const reloadPage = () =>{
+    window.location.reload()
   }
 
   return (
@@ -83,7 +88,7 @@ export default function Edit() {
           ></Form.Control>
         </Form.Group>
         <Button
-          onClick={handleUpdate}
+          onClick={(e)=>handleUpdate(e)}
           type="submit"
           className="btn btn-warning"
         >

@@ -10,24 +10,26 @@ import axios from "axios";
 export default function TeacherTable() {
   const [teacher, setTeacher] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("https://64477bb750c253374425ea00.mockapi.io/crud/teacher")
-      .then((res) => setTeacher(res.data));
-  }, []);
+  useEffect(()=>{ 
+    return getTeacherData();
+   },[]);
 
-  const history = useNavigate();
-
-  function handleRemove(id) {
+  function getTeacherData(){
     axios
+       .get("https://64477bb750c253374425ea00.mockapi.io/crud/teacher")
+       .then((res) => setTeacher(res.data));
+   }
+
+  async function handleRemove(id) {
+   await axios
       .delete(`https://64477bb750c253374425ea00.mockapi.io/crud/teacher/${id}`)
       .then(() => {
         getData();
       });
   }
 
-  function getData() {
-    axios
+  async function getData() {
+   await axios
       .get("https://64477bb750c253374425ea00.mockapi.io/crud/teacher")
       .then((d) => {
         setTeacher(d.data);

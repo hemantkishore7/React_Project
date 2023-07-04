@@ -8,24 +8,21 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function StudentTable() { 
-  
-  const reload = useNavigate();
-
- 
 
   const [student, setStudent] = useState([]);
 
- useEffect(() => getStudent(), []);
+ useEffect(() => {
+  return getStudent()},[]);
 
-  function getData(){
-    axios.get('https://64477bb750c253374425ea00.mockapi.io/crud/user')
+  async function getData(){
+    await axios.get('https://64477bb750c253374425ea00.mockapi.io/crud/user')
       .then((data)=>{
          setStudent(data.data)
       })
   }
 
   function getStudent() {
-     axios.get('https://64477bb750c253374425ea00.mockapi.io/crud/user')
+   axios.get('https://64477bb750c253374425ea00.mockapi.io/crud/user')
      .then((r)=>{
       setStudent(r.data)
      })
@@ -33,10 +30,8 @@ export default function StudentTable() {
      
   }
 
-  
-
-  function handleRemove(id) {
-    axios
+  async function handleRemove(id) {
+    await axios
       .delete(`https://64477bb750c253374425ea00.mockapi.io/crud/user/${id}`)
       .then(() => {
         getData();
@@ -53,11 +48,7 @@ export default function StudentTable() {
     localStorage.setItem("batch", batch);
   }
 
-  // function handleUpdate(e){
-  //   e.preventDefault()
-  //   SetUpdateState(-1)
-
-  //  }
+  
 
   return (
     <>
