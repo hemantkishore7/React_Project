@@ -9,7 +9,7 @@ export default function Edit(props) {
   const [name,setName] = useState();
   const [batch, setBatch] = useState();
 
-
+ const navigate = useNavigate()
 
   useEffect(()=>{
     setId(localStorage.getItem('id'))
@@ -26,7 +26,7 @@ export default function Edit(props) {
       batch
     })
     alert('Updated Successfully!..')
-    reloadPage();
+    navigate("/teacher")
     
   }
 

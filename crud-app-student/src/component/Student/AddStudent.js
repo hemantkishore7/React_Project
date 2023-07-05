@@ -24,7 +24,7 @@ export default function AddStudent() {
        batch
        })
        alert('Successfully added!..')
-       reloadPage();
+       history("/")
   }
 
 

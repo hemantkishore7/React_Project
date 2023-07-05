@@ -8,7 +8,7 @@ import axios from "axios";
 export default function Edit() {
   const navigate = useNavigate();
   
-  const [student, SetStudent] = useState(StudentData);
+  const [student, setStudent] = useState(StudentData);
   const [id,setId] = useState();
   const [name, setName] = useState('');
   const [age, setAge] = useState(0);
@@ -29,10 +29,10 @@ export default function Edit() {
   //   history('/table')
   //  }
 
-  function handleUpdate(e) {
+  async function handleUpdate(e) {
    e.preventDefault()
 
-    axios.put(`https://64477bb750c253374425ea00.mockapi.io/crud/user/${id}`,{
+   await axios.put(`https://64477bb750c253374425ea00.mockapi.io/crud/user/${id}`,{
       name,
       age,
       course,
@@ -40,7 +40,8 @@ export default function Edit() {
     })
    
     alert('Updated Successfully!..')
-    reloadPage()
+    
+    navigate("/table")
   }
 
   const reloadPage = () =>{
