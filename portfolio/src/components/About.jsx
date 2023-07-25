@@ -20,7 +20,11 @@ function About() {
             </p>
           </div>
           <div>
-            <p></p>
+            <p>
+              A web designer and developer from chennai in India. I create
+              social-media web application to people can post the photo and
+              like, comment & share
+            </p>
           </div>
         </div>
       </div>
